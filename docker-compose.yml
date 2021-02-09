@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    # depends_on:
+      # - db
+    env_file:
+      .env
+    ports:
+      - 8888:3000
+    volumes:
+      - ${PWD}/src:/app
+    command: sh -c '/wait && if [ $NODE_ENV == "development" ]; then npm install && node_modules/.bin/nodemon app.js; else npm start; fi;'
+  db:
+    image: mysql:8
+    env_file: 
+      - .env
+    volumes:
+      - ${PWD}/mysql/mysql-custom.cnf:/etc/mysql/conf.d/mysql-custom.cnf
+    ports:
+      - 3306:3306

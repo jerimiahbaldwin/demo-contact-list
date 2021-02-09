@@ -1,0 +1,42 @@
+### TO BE USED WITH VSCODE "REST Client" PLUGIN
+
+### Get a simple hello world response.
+GET http://localhost:8888/ HTTP/1.1
+
+### Test non-existent endpoint
+GET http://localhost:8888/blahblahblah HTTP/1.1
+
+### Create a contact. 
+POST http://localhost:8888/api/v1/contacts HTTP/1.1
+content-type: application/json
+
+{
+    "firstName": "Jerimiah",
+    "lastName": "Baldwin",
+    "address": "15771 Greenstone Lane",
+    "city": "Parker",
+    "state": "Colorado",
+    "zip": "80134",
+    "phone": "720-278-4954",
+    "email": "jjbaldwin@gmail.com"
+}
+
+### Get all contacts.
+GET http://localhost:8888/api/v1/contacts HTTP/1.1
+
+### Get a specific contact.
+GET http://localhost:8888/api/v1/contacts/1 HTTP/1.1
+
+### Update a contact.
+PUT http://localhost:8888/api/v1/contacts/1 HTTP/1.1
+content-type: application/json
+
+{
+    "address": "15771 GREENSTONE LANE",
+    "city": "PARKER",
+    "state": "COLORADO"
+}
+
+### Delete a contact.
+DELETE http://localhost:8888/api/v1/contacts/1 HTTP/1.1
+
